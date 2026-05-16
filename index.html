@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naila | Minimalist Visual Designer Portfolio</title>
+    <style>
+        /* CSS Variables for Light/Dark Mode Theme */
+        :root {
+            --bg-color: #D9C19D;
+            --text-color: #4A3525;
+            --accent-color: #8C6239;
+            --card-bg: #FFFFFF;
+            --section-bg: #F5EFEB;
+            --tag-bg: #D9C3B0;
+            --border-color: #EAE3DC;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1E140C;
+            --text-color: #FDFBF7;
+            --accent-color: #D9C3B0;
+            --card-bg: #2A1D12;
+            --section-bg: #251A10;
+            --tag-bg: #4A3525;
+            --border-color: #3D291B;
+        }
+
+        /* Base Setup */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        
+        /* Header Navigation */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 2rem 10%; position: sticky; top: 0; background: var(--bg-color); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .logo { font-size: 1.5rem; font-weight: 700; font-family: Georgia, serif; }
+        nav { display: flex; align-items: center; gap: 2rem; }
+        nav a:hover { color: var(--accent-color); }
+
+        /* Dark Mode Button styling */
+        .theme-toggle { background: none; border: 1px solid var(--text-color); color: var(--text-color); padding: 0.4rem 0.8rem; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
+        .theme-toggle:hover { background: var(--text-color); color: var(--bg-color); }
+
+        /* Hero Section */
+        .hero { padding: 8rem 10% 6rem 10%; max-width: 900px; }
+        .hero h1 { font-size: 3.5rem; font-family: Georgia, serif; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.2rem; color: var(--accent-color); margin-bottom: 2.5rem; max-width: 600px; }
+        .btn { display: inline-block; background: var(--text-color); color: var(--bg-color); padding: 0.8rem 2rem; border-radius: 4px; font-weight: 600; }
+        .btn:hover { opacity: 0.9; }
+
+        /* About Section */
+        .about { padding: 6rem 10%; background-color: var(--section-bg); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .about h2 { font-family: Georgia, serif; font-size: 2rem; margin-bottom: 1rem; }
+        .skills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { background: var(--tag-bg); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+
+        /* Portfolio Grid Section */
+        .portfolio { padding: 6rem 10%; }
+        .portfolio h2 { font-family: Georgia, serif; font-size: 2rem; margin-bottom: 3rem; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transform: translateY(0); transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card-img { height: 240px; background: var(--tag-bg); display: flex; align-items: center; justify-content: center; font-weight: bold; opacity: 0.8; }
+        .card-info { padding: 1.5rem; }
+        .card-info h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .card-info p { font-size: 0.9rem; color: var(--accent-color); }
+
+        /* Functional Contact Form Section */
+        .contact { padding: 6rem 10%; background-color: var(--section-bg); text-align: center; }
+        .contact h2 { font-family: Georgia, serif; font-size: 2rem; margin-bottom: 1rem; }
+        .contact p { color: var(--accent-color); margin-bottom: 2.5rem; }
+        form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+        input, textarea { width: 100%; padding: 1rem; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 4px; font-size: 0.95rem; }
+        input:focus, textarea:focus { border-color: var(--accent-color); outline: none; }
+        textarea { height: 150px; resize: vertical; }
+
+        /* Footer */
+        footer { background: #4A3525; color: #FDFBF7; text-align: center; padding: 4rem 10%; }
+        footer h2 { font-family: Georgia, serif; font-size: 2.5rem; margin-bottom: 1rem; }
+        footer p { margin-bottom: 2rem; color: #D9C3B0; }
+        .socials a { margin: 0 1rem; font-weight: 600; }
+        .socials a:hover { color: #D9C3B0; }
+        .copyright { margin-top: 3rem; font-size: 0.8rem; color: #8C6239; }
+
+        /* Responsive Breakpoint */
+        @media (max-width: 768px) {
+            header { padding: 1.5rem 5%; }
+            nav { gap: 1rem; }
+            .hero, .about, .portfolio, .contact { padding: 4rem 5%; }
+            .hero h1 { font-size: 2.5rem; }
+            .about { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Naila.</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#portfolio">Works</a>
+            <a href="#contact">Contact</a>
+            <button class="theme-toggle" id="themeToggle">Dark Mode</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Visual Storytelling Through Minimalist Design.</h1>
+        <p>Hi, I am Naila. A fresh Communication Design graduate from Vocational High School and freelance graphic designer specializing in crafting clean, intentional, and modern brand identities.</p>
+        <a href="#portfolio" class="btn">Explore My Works</a>
+    </section>
+
+    <section id="about" class="about">
+        <div>
+            <h2>About Me</h2>
+            <p>As a recent graduate in Communication Design (DKV), I combine academic fundamentals with contemporary design trends. I am passionate about helping independent brands and local businesses establish their visual identity. I deeply believe that simplicity is the ultimate sophistication.</p>
+        </div>
+        <div>
+            <h2>Skills & Tools</h2>
+            <div class="skills">
+                <span class="skill-tag">Brand Identity</span>
+                <span class="skill-tag">Photo/Video Editing</span>
+                <span class="skill-tag">Layout Design</span>
+                <span class="skill-tag">Adobe Illustrator</span>
+                <span class="skill-tag">Adobe Photoshop</span>
+                <span class="skill-tag">Canva</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2>Selected Projects</h2>
+            <!-- KARYA DESAIN 1 -->
+            <div class="card">
+                <!-- PENTING: Ganti karya1.jpg dengan nama file foto asli Anda -->
+                <img src="images/undefined-.png" alt="Project 1" style="width:100%; height:1400px; object-fit:cover;">
+                <div class="card-info">
+                    <h3>INFOGRAPHIC</h3>
+                    <p>This infographic design was created with Adobe Illustrator. llustrations were taken from the internet with further adjustments.</p>
+                </div>
+            </div>
+</section>
+
+<section id="portfolio" class="portfolio">
+            <!-- KARYA DESAIN 2 -->
+            <div class="card">
+                <!-- PENTING: Ganti karya2.png dengan nama file foto asli Anda -->
+                <img src="images/PENUNGGU GUBUK.jpg" alt="Project 2" style="width:100%; height:1400px; object-fit:cover;">
+                <div class="card-info">
+                    <h3>POSTER DESIGN</h3>
+                    <p>Film poster design created with Canva. All photos are taken and edited by myself.</p>
+                </div>
+            </div>
+</section>
+
+<section id="portfolio" class="portfolio">
+            <!-- KARYA DESAIN 3 -->
+            <div class="card">
+                <!-- PENTING: Ganti karya2.png dengan nama file foto asli Anda -->
+                <img src="images/kemasan.png" alt="Project 3" style="width:100%; height:600px; object-fit:cover;">
+                <div class="card-info">
+                    <h3>PACKAGING</h3>
+                    <p>3D packaging design is the final result of 2D product label design. I used Adobe Illustrator for label design, and Blender for packaging design.</p>
+                </div>
+            </div>
+</section>
+
+<section id="portfolio-flipbook">
+    <!-- Tempel kode iframe di bawah ini -->
+<div class="card">
+                <iframe allowfullscreen="" allow="clipboard-write" scrolling="no" class="fp-iframe" style="border: 1px solid lightgray; width: 100%; height: 400px; " src="https://heyzine.com/flip-book/24b0427a7f.html"></iframe>
+                <div class="card-info">
+                    <h3>LOGO GUIDELINE</h3>
+                    <p>Logo and guidelines were created in Adobe Illustrator. Then presented in a folding book form with the help of Heyzine Flipbook.</p>
+                </div>
+</div>
+</section>
+
+    <section id="contact" class="contact">
+        <h2>Let's Work Together</h2>
+        <p>Have a project in mind? Drop a message and let's bring your ideas to life.</p>
+        
+        <!-- Actionable Form: Replace 'nailashofash@email.com' with your real email address -->
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+    <!-- Masukkan Access Key dari Web3Forms di sini -->
+    <input type="hidden" name="access_key" value="a4936662-a2f5-4eed-bd42-129848895987">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
+            <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <h2>Open for Opportunities</h2>
+        <p>Available for freelance projects, remote work, or full/part time positions.</p>
+        <div class="socials">
+    <!-- EMAIL LANGSUNG BUKA APLIKASI EMAIL KLIEN -->
+    <a href="mailto:nailashofash@email.com">Email</a>
+    
+    <!-- INSTAGRAM -->
+    <a href="https://www.instagram.com/hazelravenclaw/" target="_blank">Instagram</a>
+    
+    <!-- LINKEDIN -->
+    <a href="https://www.linkedin.com/in/naila-shofa-hubbina-84a44a345/?isSelfProfile=true" target="_blank">LinkedIn</a>
+    
+    <!-- YOUTUBE -->
+    <a href="https://www.youtube.com/channel/UCITq2sQu1lEt8qB2uNd43Mw" target="_blank">YouTube</a>
+</div>
+
+        <p class="copyright">&copy; 2026 Naila. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Interactive Dark Mode Toggle Feature
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggleBtn.textContent = 'Dark Mode';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggleBtn.textContent = 'Light Mode';
+            }
+        });
+    </script>
+</body>
+</html>
